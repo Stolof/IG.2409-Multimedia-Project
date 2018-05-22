@@ -1,6 +1,10 @@
-resize: cleanResize
-	g++ -std=c++1y -o resize.o -c resize.cpp -Wall -O `pkg-config --cflags-only-I opencv`
-	g++ -o resize resize.o `pkg-config --cflags --libs opencv`
+Resize: clean
+	g++ -std=c++1y -o Resize.o -c Resize.cpp -Wall -O `pkg-config --cflags-only-I opencv`
+	g++ -o Resize Resize.o `pkg-config --cflags --libs opencv`
 
-cleanResize:
-	rm -f *.o resize
+dilation-erosion: clean
+	g++ -std=c++1y -o dilation-erosion.o -c dilation-erosion.cpp -Wall -O `pkg-config --cflags-only-I opencv`
+	g++ -o dilation-erosion dilation-erosion.o `pkg-config --cflags --libs opencv`
+	
+clean:
+	rm -f *.o Resize dilation-erosion
