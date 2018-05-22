@@ -1,10 +1,16 @@
 #include <opencv2/opencv.hpp>
-#include <iostream>
 #include <string>
+
+using namespace std;
+using namespace cv;
+
 #include "bright.h"
 #include "resize.h"
 #include "dil.h"
 #include "cannyEdge.h"
+
+using namespace std;
+using namespace cv;
 
 int main( int argc, char** argv )
 {
@@ -43,7 +49,7 @@ int main( int argc, char** argv )
 	cout << "The scaling factor for the Y axis has to be between 0.1 and 3" << endl;
 	goto ywrong;
 	}
-	int res=resize(srcName, destName, scaleX, scaleY);
+	int res=resize(srcName, dstName, scaleX, scaleY);
 	if (res ==1){
             cout<<"resized!"<<endl;	
 	}else{
@@ -63,10 +69,11 @@ int main( int argc, char** argv )
 	{
 	cout << "The number of iterations has to be between 1 and 10" << endl;
 	goto sizewrong;
+	}
 	
-	int dil=resize(srcName, destName,choiseParam, sizeParam);
-	if (dil ==1){
-            cout<<"resized!"<<endl;	
+	int dilatation=dil(srcName, dstName,choiseParam, sizeParam);
+	if (dilatation==1){
+            cout<<"dilatated!"<<endl;	
 	}else{
 	    cout<<"An error occured"<<endl;
 	}
@@ -75,8 +82,8 @@ int main( int argc, char** argv )
 
     if (strcmp(argv[1],"cannyEdge")==0)
     {
-	int cannyEdge = modifyBrightness(srcName, dstName);
-	if (cannyEdge ==1)
+	int canEdge = cannyEdge(srcName, dstName);
+	if (canEdge ==1)
         {
             cout<<"Canny Edge detection correctly performed"<<endl;	
         }
