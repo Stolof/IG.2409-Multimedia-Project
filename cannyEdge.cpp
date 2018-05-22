@@ -5,14 +5,18 @@ Author: Olof and Rafa
 
 #include <opencv2/opencv.hpp>
 #include <iostream>
+#include <string>
+#include "cannyEdge.h"
 
 using namespace cv;
 using namespace std;
 
-int main(int argc, char* argv[]) {
+int cannyEdge(string srcName, string destName)
+{
+try{
 
   // Read the parameters
-  char* imageName = argv[1];
+  //char* imageName = argv[1];
   //int threshold1 = argv[2];
   //int threshold2 = argv[0];
   //int kernel = argv[0];
@@ -20,7 +24,7 @@ int main(int argc, char* argv[]) {
   Mat source, result;
 
   // Read image
-  source = imread(imageName ,IMREAD_COLOR);
+  source = imread(srcName ,IMREAD_COLOR);
 
   // Check for failure
   if(source.empty()){
@@ -59,5 +63,8 @@ int main(int argc, char* argv[]) {
   // Destroy all opened windows
   destroyAllWindows();
 
+  return 1 ;
+  } catch( const std::exception &e) {
   return 0;
+  }
 }

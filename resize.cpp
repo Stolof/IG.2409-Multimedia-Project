@@ -1,16 +1,16 @@
 #include <iostream>
-
+#include <string>
 #include "resize.h"
 
-//using namespace std;
-//using namespace cv;
+using namespace std;
+using namespace cv;
 
-void resize(void)
+void resize(string source)
 {
-Mat source, scaleD, scaleU;
+Mat scaleD;
 
 // Read source image
-source = imread("van_gogh.jpg", IMREAD_COLOR);
+//source = imread("van_gogh.jpg", IMREAD_COLOR);
 
 // Check for failure
 if( source.empty() )

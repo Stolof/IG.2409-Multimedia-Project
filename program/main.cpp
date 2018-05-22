@@ -13,7 +13,7 @@ int main( int argc, char** argv )
     if (strcmp(argv[1],"bright")==0){
     	double alpha = atof(argv[4]);
 	double beta = atof(argv[5]);
-	int bright = modifyBrightness(srcName,dstName,alpha,beta);
+	int bright = modifyBrightness(srcName, dstName, alpha, beta);
 	if (bright ==1){
             cout<<"Brightness changed!"<<endl;	
 	}else{
@@ -40,7 +40,7 @@ int main( int argc, char** argv )
 	cout << "The scaling factor for the Y axis has to be between 0.1 and 3" << endl;
 	goto ywrong;
 	}
-	int res=resize(string srcName, string destName,double scaleX, double scaleY);
+	int res=resize(srcName, destName, scaleX, scaleY);
 	if (res ==1){
             cout<<"resized!"<<endl;	
 	}else{
