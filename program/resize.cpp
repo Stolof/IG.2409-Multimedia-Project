@@ -7,39 +7,42 @@
 
 int resize(string srcName, string destName,double scaleX, double scaleY)
 {
-try { 
-Mat source, dest;
+   try { 
 
-// Read source image
-source = imread(srcName, IMREAD_COLOR);
+      Mat source, dest;
 
-// Check for failure
-if( source.empty() )
-{
-    printf( " No image data \n " );
-    return -1;
-}
+      // Read source image
+      source = imread(srcName, IMREAD_COLOR);
 
-
-// Scaling the image
- resize(source, dest, Size(round(scaleX*source.cols), round(scaleY*source.rows)), scaleX, scaleY, INTER_LINEAR);
- imwrite(destName, dest);
+      // Check for failure
+      if( source.empty() )
+      {
+          printf( " No image data \n " );
+          return -1;
+      }
 
 
-//Display windows and show for all four images
- namedWindow("Display Window", WINDOW_AUTOSIZE);
- imshow("Display Window", source);
+      // Scaling the image
+      resize(source, dest, Size(round(scaleX*source.cols), round(scaleY*source.rows)), scaleX, scaleY, INTER_LINEAR);
+      imwrite(destName, dest);
 
- namedWindow("Display Window 2", WINDOW_AUTOSIZE);
- imshow("Display Window 2", dest);
 
- waitKey(0);
+      //Display windows and show for all four images
+      namedWindow("Display Window", WINDOW_AUTOSIZE);
+      imshow("Display Window", source);
 
- //destroy all opened windows
- destroyAllWindows();
+      namedWindow("Display Window 2", WINDOW_AUTOSIZE);
+      imshow("Display Window 2", dest);
 
-return 1;
-    } catch( const std::exception &e) {
-    return 0;
-    }
+      waitKey(0);
+
+      //destroy all opened windows
+      destroyAllWindows();
+
+      return 1;
+   } 
+   catch( const std::exception &e)
+   {
+      return 0;
+   }
 }
