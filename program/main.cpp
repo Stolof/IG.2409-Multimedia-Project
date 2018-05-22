@@ -3,6 +3,7 @@
 #include <string>
 #include "bright.h"
 #include "resize.h"
+#include "dil.h"
 #include "cannyEdge.h"
 
 int main( int argc, char** argv )
@@ -15,7 +16,7 @@ int main( int argc, char** argv )
     if (strcmp(argv[1],"bright")==0){
     	double alpha = atof(argv[4]);
 	double beta = atof(argv[5]);
-	int bright = modifyBrightness(srcName, dstName, alpha, beta);
+	int bright = modifyBrightness(srcName,dstName,alpha,beta);
 	if (bright ==1){
             cout<<"Brightness changed!"<<endl;	
 	}else{
@@ -50,6 +51,28 @@ int main( int argc, char** argv )
 	}
     }
 
+    if (strcmp(argv[1],"dilatationerosion")==0){
+	
+	int choiseParam;
+	int sizeParam;
+	cout << "Enter 1 for dilation and 0 for erosion" << endl;
+	cin >> choiseParam;
+	sizewrong: cout << "Choose the number of iterartions between 1-10" << endl;
+	cin >> sizeParam;
+	if (sizeParam < 1 || sizeParam > 10)
+	{
+	cout << "The number of iterations has to be between 1 and 10" << endl;
+	goto sizewrong;
+	
+	int dil=resize(srcName, destName,choiseParam, sizeParam);
+	if (dil ==1){
+            cout<<"resized!"<<endl;	
+	}else{
+	    cout<<"An error occured"<<endl;
+	}
+    }
+
+
     if (strcmp(argv[1],"cannyEdge")==0)
     {
 	int cannyEdge = modifyBrightness(srcName, dstName);
@@ -62,7 +85,6 @@ int main( int argc, char** argv )
 	     cout<<"An error occured"<<endl;
         }
     }	
-
 
     return 0;
 }
