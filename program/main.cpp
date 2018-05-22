@@ -1,7 +1,9 @@
 #include <opencv2/opencv.hpp>
 #include <iostream>
+#include <string>
 #include "bright.h"
 #include "resize.h"
+#include "cannyEdge.h"
 
 int main( int argc, char** argv )
 {
@@ -48,7 +50,18 @@ int main( int argc, char** argv )
 	}
     }
 
-	
+    if (strcmp(argv[1],"cannyEdge")==0)
+    {
+	int cannyEdge = modifyBrightness(srcName, dstName);
+	if (cannyEdge ==1)
+        {
+            cout<<"Canny Edge detection correctly performed"<<endl;	
+        }
+        else
+        {
+	     cout<<"An error occured"<<endl;
+        }
+    }	
 
 
     return 0;
