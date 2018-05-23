@@ -9,13 +9,11 @@ using namespace cv;
 #include "dil.h"
 #include "cannyEdge.h"
 
-using namespace std;
-using namespace cv;
 
 int main( int argc, char** argv )
 {
     if (argc ==1){
-	cout<<"Please specify the function you want to execute"<<endl;
+	cout<<"No arguments passed, segmentation error expected"<<endl;
     }
 	string srcName = argv[2];
 	string dstName = argv[3];
@@ -73,7 +71,7 @@ int main( int argc, char** argv )
 	
 	int dilatation=dil(srcName, dstName,choiseParam, sizeParam);
 	if (dilatation==1){
-            cout<<"dilatated!"<<endl;	
+            cout<<"changes applied"<<endl;	
 	}else{
 	    cout<<"An error occured"<<endl;
 	}
@@ -82,7 +80,14 @@ int main( int argc, char** argv )
 
     if (strcmp(argv[1],"cannyEdge")==0)
     {
-	int canEdge = cannyEdge(srcName, dstName);
+	int thr1, thr2, ker;
+	cout << "Enter the low threshold" /*values?*/ << endl;
+	cin >> thr1;
+	cout << "Enter the max threshold" /*values?*/ << endl;
+	cin >> thr2;
+	cout << "Enter the size of the kernel" /*values?*/ << endl;
+	cin >> ker;
+	int canEdge = cannyEdge(srcName, dstName, thr1, thr2, ker);
 	if (canEdge ==1)
         {
             cout<<"Canny Edge detection correctly performed"<<endl;	

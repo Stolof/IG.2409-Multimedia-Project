@@ -2,8 +2,6 @@
 
 #include "resize.h"
 
-//using namespace std;
-//using namespace cv;
 
 int resize(string srcName, string destName,double scaleX, double scaleY)
 {

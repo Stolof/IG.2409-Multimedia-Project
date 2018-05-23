@@ -51,7 +51,7 @@ try {
   imshow(orignalWindow, source);
   imshow(resultWindow, dest);
 
-  cout << "Press anykey to quit the program" << endl;
+  //cout << "Press anykey to quit the program" << endl;
   // Wait for any keystroke in the window
   waitKey(0);
 

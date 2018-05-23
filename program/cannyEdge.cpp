@@ -11,7 +11,7 @@ Author: Olof and Rafa
 using namespace cv;
 using namespace std;
 
-int cannyEdge(string srcName, string destName)
+int cannyEdge(string srcName, string destName, int threshold1, int threshold2, int kernel)
 {
   try{
 
@@ -33,15 +33,6 @@ int cannyEdge(string srcName, string destName)
         return -1;
      }
 
-     // Maybe temporary for user inputs.
-     int threshold1, threshold2, kernel;
-     cout << "Enter the low threshold" << endl;
-     cin >> threshold1;
-     cout << "Enter the max threshold" << endl;
-     cin >> threshold2;
-     cout << "Enter the size of the kernel" << endl;
-     cin >> kernel;
-
      //void Canny(InputArray image, OutputArray edges, double threshold1, double threshold2, int apertureSize=3, bool L2gradient=false )
      Canny(source, result, threshold1, threshold2, kernel);
      imwrite( destName, result );
@@ -58,7 +49,7 @@ int cannyEdge(string srcName, string destName)
      imshow(orignalWindow, source);
      imshow(resultWindow, result);
 
-     cout << "Press anykey to quit the program" << endl;
+     //cout << "Press anykey to quit the program" << endl;
      // Wait for any keystroke in the window
      waitKey(0);
 
