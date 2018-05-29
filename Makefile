@@ -9,6 +9,10 @@ dilation-erosion: clean
 cannyEdge: clean
 	g++ -std=c++1y -o cannyEdge.o -c cannyEdge.cpp -Wall -O `pkg-config --cflags-only-I opencv`
 	g++ -o cannyEdge cannyEdge.o `pkg-config --cflags --libs opencv`
-	
+
+faceRecognition: clean
+	g++ -std=c++1y -o faceRecognition.o -c faceRecognition.cpp -Wall -O `pkg-config --cflags-only-I opencv`
+	g++ -o faceRecognition faceRecognition.o `pkg-config --cflags --libs opencv`
+
 clean:
-	rm -f *.o Resize dilation-erosion cannyEdge
+	rm -f *.o Resize dilation-erosion cannyEdge faceRecognition
