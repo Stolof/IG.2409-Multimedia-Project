@@ -3,15 +3,15 @@
 #include "resize_vid.h"
 
 
-int main(int argc, char **argv)
-//int resize_vid(string srcName, string destName,double scaleX, double scaleY)
+//int main(int argc, char **argv)
+int resize_vid(string srcName, string destName,double scaleX, double scaleY)
 {
    try { 
       
-      string srcName = "chaplin.mp4";
+      /*string srcName = "chaplin.mp4";
       string destName = "opencpp.avi";
       double scaleX = 2;
-      double scaleY = 2;
+      double scaleY = 2;*/
 
 
       // Open the video file for reading
