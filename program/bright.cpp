@@ -1,23 +1,41 @@
 #include "bright.h"
 
 
-//int modifyBrightness(string srcName, string destName,double alpha, double beta);      Old version, so you know what parameters we missing
-//  MAYBE THE CATCH AND TRY CAN BE REDUCED TO ONLY ONE FOR THE WHOLE PROGRAM !!!!!
 int modifyBrightness(int img_vid){
+   try {
+    	string srcName, dstName;
+    	cout << "Type the name of the source file:" << endl;
+	cin >> srcName;
+	cout << "Type the name of the destination file:" << endl;
+	cin >> dstName;
+	
+	double alpha;
+	double beta;
+	scale: cout << "Choose a scale factor between 0.1 and 5" << endl;
+	cin >> alpha;
+	if (alpha < 0.1 || alpha >5)
+	   {
+	   cout << "The scale factor has to be between 0.1 and 5" << endl;
+	   goto scale;
+	   }
 
-    // HERE YOU ASK FOR THE SOURCE AND DESTINATION FILES I GUESS
+	shift: cout << "Choose a shift factor between -100 and 100" << endl;
+	cin >> beta;
+	if (beta < -100 || beta >100)
+	   {
+	   cout << "The shift factor has to be between -100 and 100" << endl;
+	   goto shift;
+	   }
 
-   switch (img_vid)
-   {
-      case 0 :   //In the case we are working with an image
-      {
-         try
-	 { 
+     switch (img_vid)
+     {
+       case 0 :   //In the case we are working with an image
+       {
             Mat source,dest;
             source = imread(srcName);
             dest = Mat::zeros(source.cols, source.rows, CV_64F);
             source.Mat::convertTo( dest,  -1, alpha, beta );
-            imwrite( destName, dest );
+            imwrite( dstName, dest );
 
 
 	    //Display windows and show for all four images
@@ -32,26 +50,16 @@ int modifyBrightness(int img_vid){
             //destroy all opened windows
             destroyAllWindows();
 
-
-            return 1;
-	 }
-
-         catch( const std::exception &e)
-         {
-            return 0;
-         }
 	 break;
-      }
-      case 1 :
-      {
-         try
-         {
+        }
+        case 1 :
+        {
             VideoCapture cap(srcName);   
     
             // if not success, exit program
             if(!cap.isOpened()){
                cout << "Error opening video stream or file" << endl;
-               return -1;
+               return 0;
             }
 
             // Default resolutions of the frame are obtained.The default resolutions are system dependent.
@@ -64,7 +72,7 @@ int modifyBrightness(int img_vid){
 
             // Define the codec and create VideoWriter object.The output is stored in 'outcpp.avi' file.
             VideoWriter movie;
-            movie.open(destName, CV_FOURCC('M', 'J', 'P', 'G'), 10, S, 0);
+            movie.open(dstName, CV_FOURCC('M', 'J', 'P', 'G'), 10, S, 0);
 
             //Defining window names
             //Create and open windows for above window names
@@ -111,16 +119,10 @@ int modifyBrightness(int img_vid){
             movie.release();
  
             destroyAllWindows();
-
-            return 1;
-         }
-
-         catch( const std::exception &e) 
-         {
-            return 0;
-         }
-         break;
-      }
+        }
    }
-   
+   return 1;
+   }
+   catch( const std::exception &e) 
+   { return 0; }
 }

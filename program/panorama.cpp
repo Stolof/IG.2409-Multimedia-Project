@@ -1,8 +1,13 @@
 #include "panorama.h"
 
 
-int Stitch(string folderName, string out){
+int Stitch(){
     try {
+	string folderName, out;
+	cout << "Type the name of the folder containing the images:" << endl;
+	cin >> folderName;
+	cout << "Type the name of the destination image:" << endl;
+	cin >> out;
 	String path(folderName+"/*.jpg");
 	vector<String> folder;
 	vector<Mat> images;

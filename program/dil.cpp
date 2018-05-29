@@ -1,31 +1,30 @@
-/*
-**** This is for 2.1 dilation and erosion using opencv functions.
-Author: Olof and Rafa
-*/
-
-#include <opencv2/opencv.hpp>
-#include <iostream>
-
 #include "dil.h"
 
-using namespace cv;
-using namespace std;
 
-//int dil(string srcName, string destName,int choiseParam, int sizeParam)
 int dil(int img_vid)
 {
+   try {
+	string srcName, dstName;
+    	cout << "Type the name of the source file:" << endl;
+	cin >> srcName;
+	cout << "Type the name of the destination file:" << endl;
+	cin >> dstName;
+	int choiseParam;
+	int sizeParam;
+	cout << "Enter 1 for dilation and 0 for erosion" << endl;
+	cin >> choiseParam;
+	sizewrong: cout << "Choose the number of iterartions between 1-10" << endl;
+	cin >> sizeParam;
+	if (sizeParam < 1 || sizeParam > 10)
+	   {
+	   cout << "The number of iterations has to be between 1 and 10" << endl;
+	   goto sizewrong;
+	   }
 
-    // HERE YOU ASK FOR THE SOURCE AND DESTINATION FILES I GUESS
-
-   switch (img_vid)
-   {
+     switch (img_vid)
+     {
        case 0 :
-       {
-          try 
-          { 
-             // Read the parameters
-             //int sizeParam = argv[2];
-             //int choiseParam = argv[0];
+       { 
 
              Mat source, dest;
  
@@ -36,7 +35,7 @@ int dil(int img_vid)
              if(source.empty())
              {
                 cout << "Error opening the file" << endl;
-                return -1;
+                return 0;
              }
 
 
@@ -53,7 +52,7 @@ int dil(int img_vid)
                 erode(source, dest, Mat(), Point(-1, -1), sizeParam, 1, 1);
              }
 
-             imwrite( destName, dest );
+             imwrite( dstName, dest );
 
              //Define names of the windows
              String orignalWindow = "Orignal Window";
@@ -74,29 +73,16 @@ int dil(int img_vid)
              // Destroy all opened windows
              destroyAllWindows();
 
-             return 1;
-          } 
-          catch( const std::exception &e) 
-          {
-             return 0;
-          }
           break;
-      }
-      case 1 :
-      {
-         try { 
-
-            /*string srcName = "chaplin.mp4";
-            string destName = "opencpp.avi";
-            int choiseParam = 1;
-            int sizeParam = 2;*/
-
+       }
+       case 1 :
+       {
             VideoCapture cap(srcName);   
     
             // if not success, exit program
             if(!cap.isOpened()){
                cout << "Error opening video stream or file" << endl;
-               return -1;
+               return 0;
             }
 
             // Default resolutions of the frame are obtained.The default resolutions are system dependent.
@@ -109,7 +95,7 @@ int dil(int img_vid)
 
             // Define the codec and create VideoWriter object.The output is stored in 'outcpp.avi' file.
             VideoWriter movie;
-            movie.open(destName, CV_FOURCC('M', 'J', 'P', 'G'), 10, S, 0);
+            movie.open(dstName, CV_FOURCC('M', 'J', 'P', 'G'), 10, S, 0);
 
             //Defining window names
             //Create and open windows for above window names
@@ -162,14 +148,10 @@ int dil(int img_vid)
 
             destroyAllWindows();
 
-            return 1;
-         }
-
-         catch( const std::exception &e) 
-         {
-            return 0;
-         }
-         break;
-      }
-   }
+       }
+     }
+   return 1;
+   } 
+   catch( const std::exception &e)
+   { return 0; }
 }

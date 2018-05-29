@@ -1,21 +1,38 @@
-#include <iostream>
-
 #include "resize.h"
 
 
-//int resize(string srcName, string destName,double scaleX, double scaleY)
 int resize(int img_vid)
 {
+   try { 
+	string srcName, dstName;
+    	cout << "Type the name of the source file:" << endl;
+	cin >> srcName;
+	cout << "Type the name of the destination file:" << endl;
+	cin >> dstName;
 
-    // HERE YOU ASK FOR THE SOURCE AND DESTINATION FILES I GUESS
+	// Scaling factors 0.1-3
+	xwrong: cout << "Choose a scaling factor for the X axis between 0.1 and 3" << endl;
+	double scaleX;
+	cin >> scaleX;
+	if (scaleX < 0.1 || scaleX >3)
+           {
+	   cout << "The scaling factor for the X axis has to be between 0.1 and 3" << endl;
+	   goto xwrong;
+	   }
+	
+	ywrong: cout << "Choose a scaling factor for the Y axis between 0.1 and 3" << endl;
+	double scaleY;
+	cin >> scaleY;
+	if (scaleY < 0.1 || scaleY >3)
+	   {
+	   cout << "The scaling factor for the Y axis has to be between 0.1 and 3" << endl;
+	   goto ywrong;
+	   }
 
-   switch (img_vid)
-   {
-      case 0 :
-      {
-         try 
-         { 
-
+     switch (img_vid)
+     {
+       case 0 :
+       {
             Mat source, dest;
 
             // Read source image
@@ -25,13 +42,13 @@ int resize(int img_vid)
             if( source.empty() )
             {
                 printf( " No image data \n " );
-                return -1;
+                return 0;
             }
 
 
             // Scaling the image
             resize(source, dest, Size(round(scaleX*source.cols), round(scaleY*source.rows)), scaleX, scaleY, INTER_LINEAR);
-            imwrite(destName, dest);
+            imwrite(dstName, dest);
 
 
             //Display windows and show for all four images
@@ -46,35 +63,19 @@ int resize(int img_vid)
             //destroy all opened windows
             destroyAllWindows();
 
-            return 1;
-         } 
-         catch( const std::exception &e)
-         {
-         return 0;
-         }
-         break;
-      }
-      case 1 :
-      {
-         try
-         { 
-      
-            /*string srcName = "chaplin.mp4";
-            string destName = "opencpp.avi";
-            double scaleX = 2;
-            double scaleY = 2;*/
-
-
+	    break;
+       }
+       case 1 :
+       {
             // Open the video file for reading
             VideoCapture cap(srcName);
-    
     
     
             // if not success, exit program
             if(!cap.isOpened())
             {
                cout << "Error opening video stream or file" << endl;
-               return -1;
+               return 0;
             }
 
             // Default resolutions of the frame are obtained.The default resolutions are system dependent.
@@ -89,7 +90,7 @@ int resize(int img_vid)
 
             // Define the codec and create VideoWriter object.The output is stored in 'outcpp.avi' file.
             VideoWriter movie;
-            movie.open(destName, CV_FOURCC('M', 'J', 'P', 'G'), 10, S, 0);
+            movie.open(dstName, CV_FOURCC('M', 'J', 'P', 'G'), 10, S, 0);
 
             //Defining window names
             //Create and open windows for above window names
@@ -134,16 +135,10 @@ int resize(int img_vid)
             movie.release();
 
             destroyAllWindows();
-
-
-            return 1;
-         }
-         catch( const std::exception &e)
-         {
-            return 0;
-         }
-
-         break;
-      }
-   }
+       }
+     }
+   return 1;
+   } 
+   catch( const std::exception &e)
+   { return 0; }
 }

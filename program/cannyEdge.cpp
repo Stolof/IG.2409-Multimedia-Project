@@ -1,33 +1,32 @@
-/*
-**** This is for 2.5 Canny Edge Detection using opencv function Canny
-Author: Olof and Rafa
-*/
-
-#include <opencv2/opencv.hpp>
-#include <iostream>
-#include <string>
 #include "cannyEdge.h"
 
 using namespace cv;
 using namespace std;
 
-//int cannyEdge(string srcName, string destName, int threshold1, int threshold2, int kernel)
+
 int cannyEdge(int img_vid)
 {
+   try {
+	string srcName, dstName;
+    	cout << "Type the name of the source file:" << endl;
+	cin >> srcName;
+	cout << "Type the name of the destination file:" << endl;
+	cin >> dstName;
+	int thr1, thr2, ker;
+	th1: cout << "Enter the low threshold between 50 and 150" << endl;
+	cin >> thr1;
+	if (thr1 < 50 || thr1 >150){ cout << "Please choose a threshold between 50 and 150" << endl; goto th1;}
+	th2: cout << "Enter the max threshold between 150 and 450" << endl; /*because it's recommended to use max=3*low thresholds*/
+	cin >> thr2;
+	if (thr2 < 150 || thr2 >450){ cout << "Please choose a threshold between 150 and 450" << endl; goto th2;}
+	k: cout << "Enter the size of the kernel between 3, 5 and 7" << endl;
+	cin >> ker;
+	if (ker != 3 && ker != 5 && ker != 7){ cout << "Please choose a size between 3, 5 and 7" << endl; goto k;}
 
-    // HERE YOU ASK FOR THE SOURCE AND DESTINATION FILES I GUESS
-
-   switch (img_vid)
-   {
-      case 0 :
-      {
-         try{
-
-            // Read the parameters
-            //char* imageName = argv[1];
-            //int threshold1 = argv[2];
-            //int threshold2 = argv[0];
-            //int kernel = argv[0];
+     switch (img_vid)
+     {
+       case 0 :
+       {
       
             Mat source, result;
 
@@ -38,12 +37,12 @@ int cannyEdge(int img_vid)
             if(source.empty())
             {
                cout << "Error opening the file" << endl;
-               return -1;
+               return 0;
             }
 
             //void Canny(InputArray image, OutputArray edges, double threshold1, double threshold2, int apertureSize=3, bool L2gradient=false )
-            Canny(source, result, threshold1, threshold2, kernel);
-            imwrite( destName, result );
+            Canny(source, result, thr1, thr2, ker);
+            imwrite( dstName, result );
 
             //Define names of the windows
             String orignalWindow = "Orignal Window";
@@ -64,32 +63,17 @@ int cannyEdge(int img_vid)
              // Destroy all opened windows
              destroyAllWindows();
 
-             return 1 ;
-          } 
-          catch( const std::exception &e) 
-          {
-             return 0;
-          }
           break;
        }
        case 1 :
        {
-          try{
-
-          /*string srcName = "chaplin.mp4";
-          string destName = "opencpp.avi";
-          int threshold1 = 50;
-          int threshold2 = 150;
-          int kernel = 3;*/
-
-
 
              VideoCapture cap(srcName);   
     
              // if not success, exit program
              if(!cap.isOpened()){
                 cout << "Error opening video stream or file" << endl;
-                return -1;
+                return 0;
              }
 
              // Default resolutions of the frame are obtained.The default resolutions are system dependent.
@@ -102,7 +86,7 @@ int cannyEdge(int img_vid)
 
              // Define the codec and create VideoWriter object.The output is stored in 'outcpp.avi' file.
              VideoWriter movie;
-             movie.open(destName, CV_FOURCC('M', 'J', 'P', 'G'), 10, S, 0);
+             movie.open(dstName, CV_FOURCC('M', 'J', 'P', 'G'), 10, S, 0);
 
              //Defining window names
              //Create and open windows for above window names
@@ -124,7 +108,7 @@ int cannyEdge(int img_vid)
                  if(frame.empty()) break;     
 
                  // Canny Edge
-                 Canny(frame, canny, threshold1, threshold2, kernel);
+                 Canny(frame, canny, thr1, thr2, ker);
                  movie.write(canny);
 
 
@@ -148,14 +132,10 @@ int cannyEdge(int img_vid)
 
              destroyAllWindows();
 
-             return 1;
-          }
-
-          catch( const std::exception &e) 
-          {
-             return 0;
-          }
-          break;
        }
-   }
+     }
+   return 1;
+   } 
+   catch( const std::exception &e) 
+   { return 0; }
 }
