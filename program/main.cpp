@@ -14,13 +14,40 @@ using namespace cv;
 
 int main( void )
 {
-	string funname, srcName, dstName;
-    	cout << "Please enter the name of the function you want to execute, between: dilatationerosion, resize, bright, panoramastitch, cannyEdge. Then press enter." << endl;
-	check: cin >> funname;
-	if (funname != "dilatationerosion" && funname != "resize" && funname != "bright" && funname != "panoramastitch"
-	    && funname != "cannyEdge"){
-	cout << "Please choose a function between: dilatationerosion, resize, bright, panoramastitch, cannyEdge. Then press enter." << endl;
-	goto check;}
+	string funname, img_vid, srcName, dstName;
+
+        start: cout << "Image and Video application opened. If you want to edit an image, please type 'image', if you want to edit a video, please type 'video'." << endl;
+	start: cin >> img_vid;
+
+	if (img_vid != "image" && img_vid != "video")
+        {
+           cout << "Please, choose between image or video edition" << endl;
+           goto start;
+        }
+	else if (img_vid == "image")
+	{
+	   cout << "Please enter the name of the function you want to execute, between: dilatationerosion, resize, bright, panoramastitch or cannyEdge. Then press enter." << endl;
+	check1: cin >> funname;
+
+	   if (funname != "dilatationerosion" && funname != "resize" && funname != "bright" && funname != "panoramastitch" && funname != "cannyEdge")
+           {
+	      cout << "Please choose a function between: dilatationerosion, resize, bright, panoramastitch, cannyEdge. Then press enter." << endl;
+	      goto check1;
+           }
+	}
+	else
+	{
+	   cout << "Please enter the name of the function you want to execute for the video, between: dilatationerosion, resize, bright or cannyEdge. Then press enter." << endl;
+	   check2: cin >> funname;
+
+	   if (funname != "dilatationerosion" && funname != "resize" && funname != "bright" && funname != "cannyEdge")
+           {
+	      cout << "Please choose a function between: dilatationerosion, resize, bright or cannyEdge. Then press enter." << endl;
+	      goto check2;
+           }
+	}
+	
+
 	
     if (funname == "dilatationerosion"){
 	cout << "Type the name of the source image:" << endl;
@@ -39,14 +66,15 @@ int main( void )
 	cout << "The number of iterations has to be between 1 and 10" << endl;
 	goto sizewrong;
 	}
-	
-	int dilatation=dil(srcName, dstName,choiseParam, sizeParam);
+
+	int dilatation = dil(srcName, dstName,choiseParam, sizeParam);
 	if (dilatation==1){
             cout<<"changes applied"<<endl;	
 	}else{
 	    cout<<"An error occured"<<endl;
 	}
     }
+
 
     if (funname == "resize"){
 	cout << "Type the name of the source image:" << endl;
