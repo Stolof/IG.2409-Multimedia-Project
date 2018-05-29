@@ -43,7 +43,7 @@ int cannyEdge_vid(string srcName, string destName, int threshold1, int threshold
       //Defining window names
       //Create and open windows for above window names
       string SourceWindow = "Display Window Original";
-      string CannyWindow = "Display Window different Brightness";
+      string CannyWindow = "Display CannyEdge Window";
 
       namedWindow(SourceWindow, WINDOW_AUTOSIZE);
       namedWindow(CannyWindow, WINDOW_AUTOSIZE);
