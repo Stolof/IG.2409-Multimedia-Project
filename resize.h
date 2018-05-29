@@ -2,6 +2,6 @@
 #define __CPP_RESIZE__
 
 
-void resize(void);
+void resize(string source);
 
 #endif
