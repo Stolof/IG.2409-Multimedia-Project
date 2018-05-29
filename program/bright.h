@@ -6,6 +6,6 @@
 using namespace std;
 using namespace cv;
 
-int modifyBrightness(string srcName, string destName,double alpha, double beta);
+int modifyBrightness(int img_vid);
 
 #endif

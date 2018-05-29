@@ -6,6 +6,6 @@
 using namespace std;
 using namespace cv;
 
-int dil(int img_vid);
+int dil(string srcName, string destName,int choiseParam, int sizeParam);
 
 #endif

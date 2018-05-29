@@ -6,6 +6,6 @@
 using namespace std;
 using namespace cv;
 
-int resize(int img_vid);
+int resize(string srcName, string destName,double scaleX, double scaleY);
 
 #endif

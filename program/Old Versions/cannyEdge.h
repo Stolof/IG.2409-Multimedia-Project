@@ -6,6 +6,6 @@
 using namespace std;
 using namespace cv;
 
-int cannyEdge(int img_vid);
+int cannyEdge(string srcName, string destName, int threshold1, int threshold2, int kernel);
 
 #endif
