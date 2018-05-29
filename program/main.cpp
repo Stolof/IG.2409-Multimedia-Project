@@ -12,16 +12,22 @@ using namespace cv;
 #include "cannyEdge.h"
 
 
-int main( int argc, char** argv )
+int main( void )
 {
-    if (argc ==1){
-	cout<<"No arguments passed, segmentation error expected"<<endl;
-    }
-	string srcName = argv[2];
-	string dstName = argv[3];
-
-    if (strcmp(argv[1],"dilatationerosion")==0){
+	string funname, srcName, dstName;
+    	cout << "Please enter the name of the function you want to execute, between: dilatationerosion, resize, bright, panoramastitch, cannyEdge. Then press enter." << endl;
+	check: cin >> funname;
+	if (funname != "dilatationerosion" && funname != "resize" && funname != "bright" && funname != "panoramastitch"
+	    && funname != "cannyEdge"){
+	cout << "Please choose a function between: dilatationerosion, resize, bright, panoramastitch, cannyEdge. Then press enter." << endl;
+	goto check;}
 	
+    if (funname == "dilatationerosion"){
+	cout << "Type the name of the source image:" << endl;
+	cin >> srcName;
+	cout << "Type the name of the destination image:" << endl;
+	cin >> dstName;
+
 	int choiseParam;
 	int sizeParam;
 	cout << "Enter 1 for dilatation and 0 for erosion" << endl;
@@ -42,7 +48,13 @@ int main( int argc, char** argv )
 	}
     }
 
-    if (strcmp(argv[1],"resize")==0){
+    if (funname == "resize"){
+	cout << "Type the name of the source image:" << endl;
+	cin >> srcName;
+	cout << "Type the name of the destination image:" << endl;
+	cin >> dstName;
+
+
 	// Scaling factors 0.1-3
 	xwrong: cout << "Choose a scaling factor for the X axis between 0.1 and 3" << endl;
 	double scaleX;
@@ -70,7 +82,13 @@ int main( int argc, char** argv )
 	}
     }
 
-    if (strcmp(argv[1],"bright")==0){
+    if (funname == "bright"){
+	cout << "Type the name of the source image:" << endl;
+	cin >> srcName;
+	cout << "Type the name of the destination image:" << endl;
+	cin >> dstName;
+
+
     	double alpha;  /* atof(argv[4]); */
 	double beta;
 	
@@ -98,13 +116,24 @@ int main( int argc, char** argv )
 	}
     }
 
-    if (strcmp(argv[1],"panoramastitch")==0)
+    if (funname == "panoramastitch")
     {
+	cout << "Type the name of the source image:" << endl;
+	cin >> srcName;
+	cout << "Type the name of the destination image:" << endl;
+	cin >> dstName;
+
 	
     }
 
-    if (strcmp(argv[1],"cannyEdge")==0)
+    if (funname == "cannyEdge")
     {
+	cout << "Type the name of the source image:" << endl;
+	cin >> srcName;
+	cout << "Type the name of the destination image:" << endl;
+	cin >> dstName;
+
+
 	int thr1, thr2, ker;
 	th1: cout << "Enter the low threshold between 50 and 150" << endl;
 	cin >> thr1;
