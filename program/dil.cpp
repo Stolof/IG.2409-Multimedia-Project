@@ -6,6 +6,8 @@ Author: Olof and Rafa
 #include <opencv2/opencv.hpp>
 #include <iostream>
 
+#include "dil.h"
+
 using namespace cv;
 using namespace std;
 
