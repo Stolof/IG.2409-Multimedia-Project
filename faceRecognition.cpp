@@ -20,9 +20,8 @@ int main(){
   CascadeClassifier faceCascade, eyeCascade;
 
   // Load classifiers
-  eyeCascade.load("./haarcascade_eye.xml");
+  //eyeCascade.load("./haarcascade_eye.xml");
   faceCascade.load("./haarcascade_frontalface_default.xml");
-
 
 
   while(1){
@@ -44,6 +43,7 @@ int main(){
 
     // Then he calls for detect and draw
 
+    // For the face
     faceCascade.detectMultiScale(
         gray,
         faces,
@@ -53,14 +53,15 @@ int main(){
         Size(30, 30)
     );
 
-    eyeCascade.detectMultiScale(
+    // For the eyes
+    /*eyeCascade.detectMultiScale(
         gray,
         eyes,
         1.1,
         2 , // Might need to change
         CASCADE_SCALE_IMAGE,
         Size(30, 30)
-    );
+    ); */
 
     // Resize
 
@@ -71,7 +72,7 @@ int main(){
       rectangle(frame1, recFace, colorFace, 2);
 
       // Draw eyes
-      for(int j = 0; j < eyes.size(); j++){
+      /*for(int j = 0; j < eyes.size(); j++){
 
         Rect recEye = eyes[j];
         Point center;
@@ -82,7 +83,7 @@ int main(){
 
         Scalar colorEye = Scalar(0, 0 ,255); // blue color RGB
         circle(frame1, center, radius,colorEye, 2); // maybe remove the last two
-      }
+      } */
 
     }
 
