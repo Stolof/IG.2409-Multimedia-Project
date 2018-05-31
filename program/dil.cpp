@@ -55,8 +55,8 @@ int dil(int img_vid)
              imwrite( dstName, dest );
 
              //Define names of the windows
-             String orignalWindow = "Orignal Window";
-             String resultWindow = "Result Window";
+             String orignalWindow = "Display Window Original";
+             String resultWindow = "Display Window Dilate or Erosion";
 
              // Create windows
              namedWindow(orignalWindow, CV_WINDOW_AUTOSIZE);
@@ -93,14 +93,14 @@ int dil(int img_vid)
             //VideoWriter movie;
             //int fcc = CV_FOURCC('M', 'J', 'P', 'G'); 
 
-            // Define the codec and create VideoWriter object.The output is stored in 'outcpp.avi' file.
+            // Define the codec and create VideoWriter object.
             VideoWriter movie;
-            movie.open(dstName, CV_FOURCC('M', 'J', 'P', 'G'), 10, S, 0);
+            movie.open(dstName, CV_FOURCC('M', 'J', 'P', 'G'), cap.get(CV_CAP_PROP_FPS), S);
 
             //Defining window names
             //Create and open windows for above window names
             string SourceWindow = "Display Window Original";
-            string DilWindow = "Display Window Dilatate or Erosion";
+            string DilWindow = "Display Window Dilate or Erosion";
 
             namedWindow(SourceWindow, WINDOW_AUTOSIZE);
             namedWindow(DilWindow, WINDOW_AUTOSIZE);

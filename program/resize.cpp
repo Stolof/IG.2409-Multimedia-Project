@@ -52,11 +52,11 @@ int resize(int img_vid)
 
 
             //Display windows and show for all four images
-            namedWindow("Display Window", WINDOW_AUTOSIZE);
-            imshow("Display Window", source);
+            namedWindow("Display Window Original", WINDOW_AUTOSIZE);
+            imshow("Display Window Original", source);
 
-            namedWindow("Display Window 2", WINDOW_AUTOSIZE);
-            imshow("Display Window 2", dest);
+            namedWindow("Display Window Resized", WINDOW_AUTOSIZE);
+            imshow("Display Window Resized", dest);
 
             waitKey(0);
 
@@ -88,9 +88,9 @@ int resize(int img_vid)
             //VideoWriter movie;
             //int fcc = CV_FOURCC('M', 'J', 'P', 'G'); 
 
-            // Define the codec and create VideoWriter object.The output is stored in 'outcpp.avi' file.
+            // Define the codec and create VideoWriter object.
             VideoWriter movie;
-            movie.open(dstName, CV_FOURCC('M', 'J', 'P', 'G'), 10, S, 0);
+            movie.open(dstName, CV_FOURCC('M', 'J', 'P', 'G'), cap.get(CV_CAP_PROP_FPS), S);
 
             //Defining window names
             //Create and open windows for above window names

@@ -27,8 +27,8 @@ int Stitch(){
 
 	//Display window and show for the image
 
-      namedWindow("Display Window 2", WINDOW_AUTOSIZE);
-      imshow("Display Window 2", dest);
+      namedWindow("Display Window Panorama", WINDOW_AUTOSIZE);
+      imshow("Display Window Panorama", dest);
 
       waitKey(0);
 

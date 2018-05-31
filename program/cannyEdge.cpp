@@ -45,8 +45,8 @@ int cannyEdge(int img_vid)
             imwrite( dstName, result );
 
             //Define names of the windows
-            String orignalWindow = "Orignal Window";
-            String resultWindow = "Result Window";
+            String orignalWindow = "Display Window Orignal";
+            String resultWindow = "Display CannyEdge Window";
    
             // Create windows
             namedWindow(orignalWindow, CV_WINDOW_AUTOSIZE);
@@ -84,9 +84,9 @@ int cannyEdge(int img_vid)
              //VideoWriter movie;
              //int fcc = CV_FOURCC('M', 'J', 'P', 'G'); 
 
-             // Define the codec and create VideoWriter object.The output is stored in 'outcpp.avi' file.
+             // Define the codec and create VideoWriter object.
              VideoWriter movie;
-             movie.open(dstName, CV_FOURCC('M', 'J', 'P', 'G'), 10, S, 0);
+             movie.open(dstName, CV_FOURCC('M', 'J', 'P', 'G'), cap.get(CV_CAP_PROP_FPS), S);
 
              //Defining window names
              //Create and open windows for above window names
