@@ -86,7 +86,7 @@ int cannyEdge(int img_vid)
 
              // Define the codec and create VideoWriter object.
              VideoWriter movie;
-             movie.open(dstName, CV_FOURCC('M', 'J', 'P', 'G'), cap.get(CV_CAP_PROP_FPS), S);
+             movie.open(dstName, CV_FOURCC('M', 'J', 'P', 'G'), cap.get(CV_CAP_PROP_FPS), S, 0);
 
              //Defining window names
              //Create and open windows for above window names
