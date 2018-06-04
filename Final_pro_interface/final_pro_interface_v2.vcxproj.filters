@@ -1,0 +1,128 @@
+﻿<?xml version="1.0" encoding="utf-8"?>
+<Project ToolsVersion="4.0" xmlns="http://schemas.microsoft.com/developer/msbuild/2003">
+  <ItemGroup>
+    <Filter Include="Fichiers sources">
+      <UniqueIdentifier>{4FC737F1-C7A5-4376-A066-2A32D752A2FF}</UniqueIdentifier>
+      <Extensions>cpp;c;cc;cxx;def;odl;idl;hpj;bat;asm;asmx</Extensions>
+    </Filter>
+    <Filter Include="Fichiers d%27en-tête">
+      <UniqueIdentifier>{93995380-89BD-4b04-88EB-625FBE52EBFB}</UniqueIdentifier>
+      <Extensions>h;hh;hpp;hxx;hm;inl;inc;ipp;xsd</Extensions>
+    </Filter>
+    <Filter Include="Fichiers de ressources">
+      <UniqueIdentifier>{67DA6AB6-F800-4c08-8B7A-83BB121AAD01}</UniqueIdentifier>
+      <Extensions>rc;ico;cur;bmp;dlg;rc2;rct;bin;rgs;gif;jpg;jpeg;jpe;resx;tiff;tif;png;wav;mfcribbon-ms</Extensions>
+    </Filter>
+    <Filter Include="Fichiers d%27en-tête\headers">
+      <UniqueIdentifier>{ae6a333f-6dd7-4156-b529-4f3351a164c0}</UniqueIdentifier>
+    </Filter>
+    <Filter Include="Fichiers sources\form">
+      <UniqueIdentifier>{3ba93343-047b-4e36-a3ef-4a05ac2898ba}</UniqueIdentifier>
+    </Filter>
+  </ItemGroup>
+  <ItemGroup>
+    <ClCompile Include="resize.cpp">
+      <Filter>Fichiers sources</Filter>
+    </ClCompile>
+    <ClCompile Include="convert_string.cpp">
+      <Filter>Fichiers sources</Filter>
+    </ClCompile>
+    <ClCompile Include="faceRecognition.cpp">
+      <Filter>Fichiers sources</Filter>
+    </ClCompile>
+    <ClCompile Include="dil.cpp">
+      <Filter>Fichiers sources</Filter>
+    </ClCompile>
+    <ClCompile Include="bright.cpp">
+      <Filter>Fichiers sources</Filter>
+    </ClCompile>
+    <ClCompile Include="panorama.cpp">
+      <Filter>Fichiers sources</Filter>
+    </ClCompile>
+    <ClCompile Include="bright_form.cpp">
+      <Filter>Fichiers sources\form</Filter>
+    </ClCompile>
+    <ClCompile Include="MyForm.cpp">
+      <Filter>Fichiers sources\form</Filter>
+    </ClCompile>
+    <ClCompile Include="dil_form.cpp">
+      <Filter>Fichiers sources\form</Filter>
+    </ClCompile>
+    <ClCompile Include="panorama_form.cpp">
+      <Filter>Fichiers sources\form</Filter>
+    </ClCompile>
+    <ClCompile Include="resize_form2.cpp">
+      <Filter>Fichiers sources\form</Filter>
+    </ClCompile>
+    <ClCompile Include="face_form.cpp">
+      <Filter>Fichiers sources\form</Filter>
+    </ClCompile>
+    <ClCompile Include="cannyEdge.cpp">
+      <Filter>Fichiers sources</Filter>
+    </ClCompile>
+    <ClCompile Include="cannyEdge_form.cpp">
+      <Filter>Fichiers sources\form</Filter>
+    </ClCompile>
+  </ItemGroup>
+  <ItemGroup>
+    <ClInclude Include="MyForm.h">
+      <Filter>Fichiers d%27en-tête</Filter>
+    </ClInclude>
+    <ClInclude Include="resize_form2.h">
+      <Filter>Fichiers d%27en-tête</Filter>
+    </ClInclude>
+    <ClInclude Include="dil_form.h">
+      <Filter>Fichiers d%27en-tête</Filter>
+    </ClInclude>
+    <ClInclude Include="bright_form.h">
+      <Filter>Fichiers d%27en-tête</Filter>
+    </ClInclude>
+    <ClInclude Include="panorama_form.h">
+      <Filter>Fichiers d%27en-tête</Filter>
+    </ClInclude>
+    <ClInclude Include="face_form.h">
+      <Filter>Fichiers d%27en-tête</Filter>
+    </ClInclude>
+    <ClInclude Include="bright.h">
+      <Filter>Fichiers d%27en-tête\headers</Filter>
+    </ClInclude>
+    <ClInclude Include="dil.h">
+      <Filter>Fichiers d%27en-tête\headers</Filter>
+    </ClInclude>
+    <ClInclude Include="faceRecognition.h">
+      <Filter>Fichiers d%27en-tête\headers</Filter>
+    </ClInclude>
+    <ClInclude Include="panorama.h">
+      <Filter>Fichiers d%27en-tête\headers</Filter>
+    </ClInclude>
+    <ClInclude Include="resize.h">
+      <Filter>Fichiers d%27en-tête\headers</Filter>
+    </ClInclude>
+    <ClInclude Include="cannyEdge.h">
+      <Filter>Fichiers d%27en-tête\headers</Filter>
+    </ClInclude>
+    <ClInclude Include="cannyEdge_form.h">
+      <Filter>Fichiers d%27en-tête</Filter>
+    </ClInclude>
+  </ItemGroup>
+  <ItemGroup>
+    <EmbeddedResource Include="bright_form.resx">
+      <Filter>Fichiers de ressources</Filter>
+    </EmbeddedResource>
+    <EmbeddedResource Include="dil_form.resx">
+      <Filter>Fichiers de ressources</Filter>
+    </EmbeddedResource>
+    <EmbeddedResource Include="face_form.resx">
+      <Filter>Fichiers de ressources</Filter>
+    </EmbeddedResource>
+    <EmbeddedResource Include="MyForm.resx">
+      <Filter>Fichiers de ressources</Filter>
+    </EmbeddedResource>
+    <EmbeddedResource Include="panorama_form.resx">
+      <Filter>Fichiers de ressources</Filter>
+    </EmbeddedResource>
+    <EmbeddedResource Include="resize_form2.resx">
+      <Filter>Fichiers de ressources</Filter>
+    </EmbeddedResource>
+  </ItemGroup>
+</Project>
